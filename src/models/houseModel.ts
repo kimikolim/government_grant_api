@@ -8,7 +8,7 @@ export enum HousingType {
 }
 
 export interface IHouse {
-    id: string
+    id?: string
     housingType: HousingType
     familyMembers: IMemberDetails[]
 }

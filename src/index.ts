@@ -1,14 +1,22 @@
-import express, { Express, Request, Response } from "express"
 import dotenv from "dotenv"
-
-dotenv.config()
-
-const app: Express = express()
+import { createApp } from "./app"
+import mongoose from "mongoose"
 const port = process.env.PORT
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server")
-})
+dotenv.config()
+const MONGO_URI = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/admin`
+
+
+
+const app = createApp()
+
+try {
+  mongoose.set('returnOriginal', false)
+  mongoose.connect(MONGO_URI)
+  console.log('### CONNECT TO DATABASE SUCCESSFUL ###')
+} catch (error) {
+  console.error('mongodb connection failed: ', error)
+}
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at https://localhost:${port}`)

@@ -8,7 +8,7 @@ export enum OccupationType {
 }
 
 export interface IMemberDetails {
-    id: string
+    id?: string
     houseId: string
     name: string
     gender: string
