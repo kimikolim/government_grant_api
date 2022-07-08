@@ -6,7 +6,10 @@ const port = process.env.PORT
 dotenv.config()
 const MONGO_URI = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/admin`
 
-
+// process.env.PORT
+// DB_PASSWORD
+// DB_USERNAME
+// DB_HOST
 
 const app = createApp()
 
