@@ -16,7 +16,7 @@ interface IHouse {
 // 2. Create a Schema corresponding to the household document interface.
 const houseSchema = new Schema<IHouse>({
   housingType: { type: String, required: true, enum: HousingType },
-  familyMembers: [{ ref: 'Members', type: mongoose.Schema.Types.ObjectId }],
+  familyMembers: [{ ref: 'MembersModel', type: mongoose.Schema.Types.ObjectId }],
 })
 
 // 3. Create a Model.

@@ -1,15 +1,20 @@
 import mongoose, { Schema, model, Mixed } from 'mongoose'
 
-enum OccupationType {
+export enum OccupationType {
   UNEMPLOYED = 'UNEMPLOYED',
   STUDENT = 'STUDENT',
   EMPLOYED = 'EMPLOYED',
 }
 
-enum MaritalStatus {
+export enum MaritalStatus {
   MARRIED = 'MARRIED',
   SINGLE = 'SINGLE',
   DIVORCED = 'DIVORCED',
+}
+
+export enum Gender {
+  MALE = 'MALE',
+  FEMALE = 'FEMALE'
 }
 
 // 1. Create an interface representing household members document in MongoDB.
@@ -17,27 +22,27 @@ interface IMemberDetails {
   id?: string
   houseId: string | Mixed
   name: string
-  gender: string
+  gender: Gender
   maritalStatus: MaritalStatus
   spouse: string
   occupationType: OccupationType
   annualIncome: number
-  DOB: Date
+  DOB: string
 }
 
 // 2. Create a Schema corresponding to the household document interface.
 const memberSchema = new Schema<IMemberDetails>({
-  houseId: { type: String, required: true },
+  houseId: {ref: 'HouseholdModel' ,type: String, required: true },
   name: { type: String, require: true },
-  gender: { type: String, required: true },
+  gender: { type: String, required: true, enum: Gender },
   maritalStatus: { type: String, required: true, enum: MaritalStatus },
   spouse: { type: String },
   occupationType: {type: String, required: true, enum: OccupationType},
   annualIncome: {type: Number, required: true},
-  DOB: {type: Date, required: true},
+  DOB: {type: String, required: true},
 })
 
 // 3. Create a Model.
-const Members = model<IMemberDetails>('Members', memberSchema)
+const MembersModel = model<IMemberDetails>('MembersModel', memberSchema)
 
-export { OccupationType, IMemberDetails, Members }
+export { IMemberDetails, MembersModel }
