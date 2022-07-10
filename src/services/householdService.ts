@@ -1,11 +1,11 @@
 import { BadRequestError } from 'routing-controllers'
-import { Household, IHouse } from '../models/houseModel'
+import { HouseholdModel, IHouse } from '../models/houseModel'
 import { HouseResponse } from '../resources/houseHoldResponse'
 
 export class HouseholdService {
   async createHousehold(household: IHouse) {
     const { housingType, familyMembers } = household
-    const newHousehold = new Household({
+    const newHousehold = new HouseholdModel({
       housingType,
       familyMembers
     })
