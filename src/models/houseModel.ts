@@ -17,6 +17,10 @@ interface IHouse {
 const houseSchema = new Schema<IHouse>({
   housingType: { type: String, required: true, enum: HousingType },
   familyMembers: [{ ref: 'MembersModel', type: mongoose.Schema.Types.ObjectId }],
+}, {
+  toJSON: {
+    virtuals: true,
+  }
 })
 
 // 3. Create a Model.
