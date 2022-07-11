@@ -9,6 +9,7 @@ import {
   Authorized,
   CurrentUser,
   BadRequestError,
+  Params,
 } from 'routing-controllers'
 import { IHouse } from '../models/houseModel'
 import { HouseholdService } from '../services/householdService'
@@ -34,6 +35,18 @@ export class HouseController {
     }
     //Calls create household service
     const result = this.householdService.createHousehold(household)
+    return result
+  }
+
+  @Get('/household')
+  async getAllHouseholds() {
+    const result = this.householdService.getAllHouseholds()
+    return result
+  }
+
+  @Get('/household/:houseId')
+  async getHouseholdById(@Param('houseId') houseId: string) {
+    const result = await this.householdService.getHouseholdById(houseId)
     return result
   }
 }

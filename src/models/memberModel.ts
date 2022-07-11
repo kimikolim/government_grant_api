@@ -40,6 +40,12 @@ const memberSchema = new Schema<IMemberDetails>({
   occupationType: {type: String, required: true, enum: OccupationType},
   annualIncome: {type: Number, required: true},
   DOB: {type: String, required: true},
+}, {
+  toJSON: {
+    virtuals: true,
+    // getters: true,
+    // minimize: false
+  }
 })
 
 // 3. Create a Model.

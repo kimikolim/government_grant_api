@@ -1,11 +1,10 @@
-import { string } from "joi";
-import { SchemaType } from "mongoose";
+import { ObjectId, ObjectIdExpression } from "mongoose";
 import { HousingType, IHouse } from "../models/houseModel";
-
+import { IMemberDetails } from "../models/memberModel";
 class House {
-    id: string
+    id: string | ObjectId
     housingType: HousingType
-    familyMembers: SchemaType<any>
+    familyMembers: IMemberDetails[] | ObjectId
     constructor(household: IHouse) {
         this.id = household.id ?? ''
         this.housingType = household.housingType
@@ -17,7 +16,7 @@ export class HouseResponse {
     message: string
     house: House
     constructor(message: string, house: IHouse) {
-        this.message = this.message
+        this.message = message
         this.house = new House(house)
     }
 }
@@ -25,9 +24,9 @@ export class HouseResponse {
 export class HouseholdListResponse {
     message: string
     houses: House[]
-    constructor(message: string, houses: IHouse[]){
+    constructor(message: string, houses: any){
         this.message = message
         this.houses = []
-        houses.map((home)=> this.houses.push(new House(home)))
+        houses.map((home: any)=> this.houses.push(new House(home)))
     }
 }

@@ -1,4 +1,5 @@
-import mongoose, { Schema, model, Mixed } from 'mongoose'
+import mongoose, { Schema, model, ObjectId } from 'mongoose'
+import { IMemberDetails } from './memberModel'
 // import { IMemberDetails } from './memberModel'
 
 enum HousingType {
@@ -10,7 +11,7 @@ enum HousingType {
 interface IHouse {
   id?: string
   housingType: HousingType
-  familyMembers: Mixed
+  familyMembers: IMemberDetails[] | ObjectId
 }
 
 // 2. Create a Schema corresponding to the household document interface.
@@ -20,6 +21,8 @@ const houseSchema = new Schema<IHouse>({
 }, {
   toJSON: {
     virtuals: true,
+    // getters: true,
+    // minimize: false
   }
 })
 

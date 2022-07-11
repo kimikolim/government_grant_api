@@ -38,7 +38,7 @@ export class MemberService {
           response,
         )
       } else {
-        return new NotFoundError('Error: No valid household found')
+        throw new NotFoundError('Error: No valid household found')
       }
     } catch (error) {
       console.log(error)
