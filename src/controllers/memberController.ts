@@ -12,6 +12,7 @@ import {
   BadRequestError,
 } from 'routing-controllers'
 import { IMemberDetails } from '../models/memberModel'
+import { memberValidator } from '../resources/memberValidation'
 import { MemberService } from '../services/memberService'
 
 @JsonController('/api/v1')
@@ -29,6 +30,14 @@ export class MemberController {
     @Param('houseId') houseId: string,
     @Body() member: IMemberDetails,
   ) {
+      //Joi validation
+      const validateMember = memberValidator.validate(member)
+      if (validateMember.error) {
+        const message = validateMember.error.details[0].message
+        throw new BadRequestError(`${message}`)
+      }
+
+      //Calls create new family member service    
       const result = this.memberService.createMemberByHousehold(houseId, member)
       return result
   }

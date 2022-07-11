@@ -32,7 +32,7 @@ interface IMemberDetails {
 
 // 2. Create a Schema corresponding to the household document interface.
 const memberSchema = new Schema<IMemberDetails>({
-  houseId: {ref: 'HouseholdModel' ,type: String, required: true },
+  houseId: {ref: 'Household' ,type: String, required: true },
   name: { type: String, require: true },
   gender: { type: String, required: true, enum: Gender },
   maritalStatus: { type: String, required: true, enum: MaritalStatus },
@@ -43,6 +43,6 @@ const memberSchema = new Schema<IMemberDetails>({
 })
 
 // 3. Create a Model.
-const MembersModel = model<IMemberDetails>('MembersModel', memberSchema)
+const MembersModel = model<IMemberDetails>('Members', memberSchema)
 
 export { IMemberDetails, MembersModel }
