@@ -1,4 +1,4 @@
-import { BadRequestError } from 'routing-controllers'
+import { BadRequestError, NotFoundError } from 'routing-controllers'
 import { HouseholdModel, IHouse } from '../models/houseModel'
 import {
   HouseholdListResponse,
@@ -8,7 +8,8 @@ import {
 export class HouseholdService {
   async getAllHouseholds() {
     try {
-      const response = await HouseholdModel.find()
+      const response = await HouseholdModel.find().populate('familyMembers')
+      console.log(response)
       return new HouseholdListResponse('Fetched All Households', response)
     } catch (error) {
       throw new BadRequestError('Fetch households failed.')
@@ -18,10 +19,10 @@ export class HouseholdService {
   async getHouseholdById(houseId: string) {
     try {
       const response = await HouseholdModel.findById({ _id: houseId }).populate('familyMembers')
-      console.log(response?.toObject())
-      return new HouseResponse('Household Found!', response?.toObject()!)
+      console.log(response)
+      return new HouseResponse('Household Found!', response)
     } catch (error) {
-      throw new BadRequestError('Error: Unable to find Household.')
+      throw new NotFoundError('Error: Unable to find Household.')
     }
   }
 
@@ -33,7 +34,9 @@ export class HouseholdService {
     })
 
     try {
-      const response = await newHousehold.save() //writes to db
+      //create()
+      const response = await HouseholdModel.create(newHousehold) //writes to db
+      console.log(response)
       return new HouseResponse('New Household created', response)
     } catch (error) {
       throw new BadRequestError('New Household not created successfully')

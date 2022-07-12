@@ -1,7 +1,11 @@
 import { Mixed } from 'mongoose'
-import { IMemberDetails, MaritalStatus, OccupationType } from '../models/memberModel'
+import {
+  IMemberDetails,
+  MaritalStatus,
+  OccupationType,
+} from '../models/memberModel'
 
-class Member {
+export class Member {
   id: string
   houseId: string | Mixed
   name: string

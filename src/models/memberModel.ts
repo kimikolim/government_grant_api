@@ -14,7 +14,7 @@ export enum MaritalStatus {
 
 export enum Gender {
   MALE = 'MALE',
-  FEMALE = 'FEMALE'
+  FEMALE = 'FEMALE',
 }
 
 // 1. Create an interface representing household members document in MongoDB.
@@ -31,22 +31,25 @@ interface IMemberDetails {
 }
 
 // 2. Create a Schema corresponding to the household document interface.
-const memberSchema = new Schema<IMemberDetails>({
-  houseId: {ref: 'Household' ,type: String, required: true },
-  name: { type: String, require: true },
-  gender: { type: String, required: true, enum: Gender },
-  maritalStatus: { type: String, required: true, enum: MaritalStatus },
-  spouse: { type: String },
-  occupationType: {type: String, required: true, enum: OccupationType},
-  annualIncome: {type: Number, required: true},
-  DOB: {type: String, required: true},
-}, {
-  toJSON: {
-    virtuals: true,
-    // getters: true,
-    // minimize: false
-  }
-})
+const memberSchema = new Schema<IMemberDetails>(
+  {
+    houseId: { ref: 'Household', type: String, required: true },
+    name: { type: String, require: true },
+    gender: { type: String, required: true, enum: Gender },
+    maritalStatus: { type: String, required: true, enum: MaritalStatus },
+    spouse: { type: String },
+    occupationType: { type: String, required: true, enum: OccupationType },
+    annualIncome: { type: Number, required: true },
+    DOB: { type: String, required: true },
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      // getters: true,
+      // minimize: false
+    },
+  },
+)
 
 // 3. Create a Model.
 const MembersModel = model<IMemberDetails>('Members', memberSchema)

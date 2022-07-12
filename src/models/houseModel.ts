@@ -11,7 +11,7 @@ enum HousingType {
 interface IHouse {
   id?: string
   housingType: HousingType
-  familyMembers: IMemberDetails[] | ObjectId
+  familyMembers: any
 }
 
 // 2. Create a Schema corresponding to the household document interface.
