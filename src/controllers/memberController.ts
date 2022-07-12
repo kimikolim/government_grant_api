@@ -26,7 +26,7 @@ export class MemberController {
   private memberService = new MemberService()
 
   @Post('/create/:houseId/member')
-  async createHousehold(
+  async createHouseholdMember(
     @Param('houseId') houseId: string,
     @Body() member: IMemberDetails,
   ) {
