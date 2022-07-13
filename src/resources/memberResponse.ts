@@ -18,6 +18,7 @@ export class Member {
   constructor(member: IMemberDetails) {
     this.id = member.id ?? ''
     this.houseId = member.houseId ?? ''
+    this.name = member.name
     this.gender = member.gender
     this.maritalStatus = member.maritalStatus
     this.spouse = member.spouse

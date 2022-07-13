@@ -10,6 +10,7 @@ import {
   CurrentUser,
   BadRequestError,
   Params,
+  QueryParam,
 } from 'routing-controllers'
 import { IHouse } from '../models/houseModel'
 import { HouseholdService } from '../services/householdService'
