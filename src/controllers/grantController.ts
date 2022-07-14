@@ -15,7 +15,7 @@ import { HouseholdModel, IHouse } from '../models/houseModel'
 import { HouseholdService } from '../services/householdService'
 import { householdValidator } from '../resources/householdValidation'
 
-@JsonController('/api/v1')
+@JsonController('/api/v1/grant')
 
 /**
  * All Grants and Schemes
@@ -68,7 +68,7 @@ export class GrantController {
    * Age < 16
    */
 
-  @Get('/grant/student-encouragment-bonus')
+  @Get('/student-encouragment-bonus')
   async getStudentEncouragementBonus() {
     const response = await HouseholdModel.aggregate([
       this.mongoLookup,
@@ -112,7 +112,7 @@ export class GrantController {
    * Age < 18
    */
 
-  @Get('/grant/family-togetherness-scheme')
+  @Get('/family-togetherness-scheme')
   async getFamilyTogethernessScheme() {
     const response = HouseholdModel.aggregate([
       this.mongoLookup,
@@ -153,7 +153,7 @@ export class GrantController {
    * Age > 50
    */
 
-  @Get('/grant/elder-bonus')
+  @Get('/elder-bonus')
   async getElderBonus() {
     const response = HouseholdModel.aggregate([
       this.mongoLookup,
@@ -195,7 +195,7 @@ export class GrantController {
    * Household with age < 5
    */
 
-  @Get('/grant/baby-sunshine-grant')
+  @Get('/baby-sunshine-grant')
   async getBabySunshineGrant() {
     const response = HouseholdModel.aggregate([
       this.mongoLookup,
@@ -231,7 +231,7 @@ export class GrantController {
    * Must be HDB only
    */
 
-  @Get('/grant/yolo-gst-grant')
+  @Get('/yolo-gst-grant')
   async getYoloGstGrant() {
     const response = HouseholdModel.aggregate([
       this.mongoLookup,
