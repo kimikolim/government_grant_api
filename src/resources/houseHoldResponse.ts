@@ -5,18 +5,18 @@ import { Member } from './memberResponse'
 class House {
   id: string | ObjectId
   housingType: HousingType
-  familyMembers: any
+  familyMembers: Member[]
   constructor(household: IHouse) {
     this.id = household.id ?? ''
     this.housingType = household.housingType
-    this.familyMembers = household.familyMembers.map((m: any) => new Member(m))
+    this.familyMembers = household.familyMembers.map((m: IMemberDetails) => new Member(m))
   }
 }
 
 export class HouseResponse {
   message: string
   house: House
-  constructor(message: string, house: any) {
+  constructor(message: string, house: IHouse) {
     this.message = message
     this.house = new House(house)
   }
@@ -25,9 +25,9 @@ export class HouseResponse {
 export class HouseholdListResponse {
   message: string
   houses: House[]
-  constructor(message: string, houses: any) {
+  constructor(message: string, houses: IHouse[]) {
     this.message = message
     this.houses = []
-    houses.map((home: any) => this.houses.push(new House(home)))
+    houses.map((home: IHouse) => this.houses.push(new House(home)))
   }
 }

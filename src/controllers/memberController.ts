@@ -41,4 +41,10 @@ export class MemberController {
       const result = this.memberService.createMemberByHousehold(houseId, member)
       return result
   }
+
+  @Delete('/:houseId/:id')
+  async deleteMemberById (@Param('id') id: string, @Param('houseId') houseId: string) {
+    const result = this.memberService.deleteMemberById(houseId, id)
+    return result
+ }
 }

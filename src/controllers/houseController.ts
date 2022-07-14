@@ -50,4 +50,10 @@ export class HouseController {
     const result = await this.householdService.getHouseholdById(houseId)
     return result
   }
+
+  @Delete('/:houseId')
+  async deleteHouseholdById(@Param('houseId') houseId: string) {
+    const result = await this.householdService.deleteHouseById(houseId)
+    return result
+  }
 }

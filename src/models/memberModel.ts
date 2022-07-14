@@ -20,7 +20,7 @@ export enum Gender {
 // 1. Create an interface representing household members document in MongoDB.
 interface IMemberDetails {
   id?: string
-  houseId: string | Mixed
+  houseId: string 
   name: string
   gender: Gender
   maritalStatus: MaritalStatus
