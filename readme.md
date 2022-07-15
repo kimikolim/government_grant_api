@@ -45,7 +45,9 @@ DB_HOST=mongo_db
 
 ## Postman
 
-Conveniently import the `Grant_API.postman_collection.json` file provided into your postman app to access the routes and create household and family members body objects.
+Conveniently import the `Grant_API.postman_collection.json` file provided [here](https://github.com/kimikolim/government_grant_api/blob/master/public/Grant_API.postman_collection.json) into your postman app to import the routes and create new household and family members body objects.
+
+Alternatively you can copy text provided in the `swagger.yaml` file [here]() and replace it in the online [swagger editor](https://editor.swagger.io/).
 
 &nbsp;
 

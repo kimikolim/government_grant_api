@@ -1,0 +1,150 @@
+openapi: 3.0.0
+info:
+  title: Grant_API
+  description: Government grant reimburstment API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001
+paths:
+  /api/v1/create:
+    post:
+      tags:
+        - General
+      summary: create new household
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                housingType: HDB
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/create/{houseId}/member:
+    post:
+      tags:
+        - General
+      summary: create new member
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Jane Doe
+                gender: FEMALE
+                maritalStatus: SINGLE
+                spouse: ''
+                occupationType: UNEMPLOYED
+                annualIncome: 180000
+                DOB: 13/12/1990
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/household:
+    get:
+      tags:
+        - General
+      summary: get all households
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/household/{houseId}:
+    get:
+      tags:
+        - General
+      summary: get household by Id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/grant/student-encouragment-bonus:
+    get:
+      tags:
+        - General
+      summary: student-encouragment-bonus
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/grant/elder-bonus:
+    get:
+      tags:
+        - General
+      summary: elder-bonus
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/grant/yolo-gst-grant:
+    get:
+      tags:
+        - General
+      summary: yolo-gst-grant
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/grant/baby-sunshine-grant:
+    get:
+      tags:
+        - General
+      summary: baby-sunshine-grant
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/grant/family-togetherness-scheme:
+    get:
+      tags:
+        - General
+      summary: family-togetherness-scheme
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/{houseId}/{id}:
+    delete:
+      tags:
+        - General
+      summary: Delete Family member
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/{houseId}:
+    delete:
+      tags:
+        - General
+      summary: delete household
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
