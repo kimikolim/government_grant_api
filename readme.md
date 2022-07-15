@@ -43,13 +43,25 @@ DB_HOST=mongo_db
 
 &nbsp;
 
-## Postman
+## Postman & Swagger
 
 Conveniently import the `Grant_API.postman_collection.json` file provided [here](https://github.com/kimikolim/government_grant_api/blob/master/public/Grant_API.postman_collection.json) into your postman app to import the routes and create new household and family members body objects.
 
-Alternatively you can copy text provided in the `swagger.yaml` file [here]() and replace it in the online [swagger editor](https://editor.swagger.io/).
+Alternatively you can copy text provided in the `swagger.yaml` file [here](https://github.com/kimikolim/government_grant_api/blob/master/public/swagger.yaml) and replace it in the online [swagger editor](https://editor.swagger.io/) to glance the routes and create new household and family members body objects.
 
 &nbsp;
+
+## MongoDB Compass
+
+1. Open mongoDB compass on your local machine. Create new connection URI `mongodb:localhost:27017`
+1. Click on `Advanced Connection Options` followed by the `Authentication` tab.
+1. Input `Username` and `Password` in the fields provided according to your `.env` file and connect.
+
+Note: Once successful connect, upon first creation of a new household, a new `households` folder will automatically be created in the `admin` folder. Likewise after creating a new family member, a new `members` folder will automatically be create if it does not exist in the `admin` folder.
+
+&nbsp;
+
+
 
 ## &#x1F34E; Features
 
@@ -63,6 +75,8 @@ Alternatively you can copy text provided in the `swagger.yaml` file [here]() and
    - Elder Bonus
    - Baby Sunshine Grant
    - YOLO GST Grant
+1. Delete a family member
+1. Delete a household
 
 &nbsp;
 
@@ -77,7 +91,7 @@ Alternatively you can copy text provided in the `swagger.yaml` file [here]() and
 <strong><em>services</em></strong> - functions that contains code that interacts with MongoDB directly.\
 <strong><em>utils</em></strong> - general reusable functions.
 
-![Structure]()
+![Structure](https://github.com/kimikolim/government_grant_api/blob/master/public/grant_folder_structure.jpg?raw=-true)
 
 &nbsp;
 
@@ -146,9 +160,9 @@ Alternatively you can copy text provided in the `swagger.yaml` file [here]() and
 - Data validation
 - Unit Testing
 - Modular folder restructure
-- Ideally relational db eg. Postgres
+- Relational DB eg. Postgres
 - Authorisation and authentication
-- Swagger API spec
+- Comprehensive Swagger API spec
 
 &nbsp;
 
