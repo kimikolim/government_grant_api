@@ -43,6 +43,12 @@ DB_HOST=mongo_db
 
 &nbsp;
 
+## Postman
+
+Conveniently import the `Grant_API.postman_collection.json` file provided into your postman app to access the routes and create household and family members body objects.
+
+&nbsp;
+
 ## &#x1F34E; Features
 
 1. Create Household
@@ -138,6 +144,9 @@ DB_HOST=mongo_db
 - Data validation
 - Unit Testing
 - Modular folder restructure
+- Ideally relational db eg. Postgres
+- Authorisation and authentication
+- Swagger API spec
 
 &nbsp;
 
