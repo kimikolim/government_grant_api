@@ -4,16 +4,11 @@ import {
   Body,
   Get,
   Post,
-  Put,
   Delete,
-  Authorized,
-  CurrentUser,
   BadRequestError,
-  Params,
-  QueryParam,
 } from 'routing-controllers'
 import { IHouse } from '../models/houseModel'
-import { HouseholdService } from '../services/householdService'
+import { HouseholdService } from '../services/HouseholdService'
 import { householdValidator } from '../resources/householdValidation'
 
 @JsonController('/api/v1')

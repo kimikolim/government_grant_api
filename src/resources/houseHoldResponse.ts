@@ -5,11 +5,15 @@ import { Member } from './memberResponse'
 class House {
   id: string | ObjectId
   housingType: HousingType
+  totalIncome?: number
   familyMembers: Member[]
   constructor(household: IHouse) {
     this.id = household.id ?? ''
     this.housingType = household.housingType
-    this.familyMembers = household.familyMembers.map((m: IMemberDetails) => new Member(m))
+    this.totalIncome = household.totalIncome
+    this.familyMembers = household.familyMembers.map(
+      (m: IMemberDetails) => new Member(m),
+    )
   }
 }
 
@@ -27,7 +31,6 @@ export class HouseholdListResponse {
   houses: House[]
   constructor(message: string, houses: IHouse[]) {
     this.message = message
-    this.houses = []
-    houses.map((home: IHouse) => this.houses.push(new House(home)))
+    this.houses = houses.map((home: IHouse) => new House(home))
   }
 }

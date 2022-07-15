@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import {
   BadRequestError,
   InternalServerError,
@@ -10,6 +9,7 @@ import {
   HouseholdListResponse,
   HouseResponse,
 } from '../resources/houseHoldResponse'
+import { houseIdChecker } from '../utils/mongooseChecker'
 
 export class HouseholdService {
   async getAllHouseholds() {
@@ -17,7 +17,7 @@ export class HouseholdService {
       const response = await HouseholdModel.find().populate('familyMembers')
       return new HouseholdListResponse('Fetched All Households', response)
     } catch (error) {
-      throw new BadRequestError('Fetch households failed.')
+      throw new NotFoundError('Fetch households failed.')
     }
   }
 
@@ -51,35 +51,17 @@ export class HouseholdService {
     /**
      * Check for valid IDs provided
      */
-
-    if (!mongoose.Types.ObjectId.isValid(houseId)) {
-      return new BadRequestError('Invalid House ID')
-    }
-
-    /**
-     * Checks if Family Member & Househ exists
-     */
-
-    let houseSearch = null
-    try {
-      houseSearch = await HouseholdModel.find({ _id: houseId })
-    } catch (error) {
-      return new InternalServerError(`${error}`)
-    }
-    if (!houseSearch.length) {
-      return new NotFoundError('Error: No valid household found.')
-    }
+     await houseIdChecker(houseId)
 
     /**
      * Deletes Household and all family members in household
      */
-
     try {
-      const response = await HouseholdModel.findByIdAndDelete(houseId)
+      const response = await HouseholdModel.findByIdAndDelete(houseId).populate('familyMembers')
       await MembersModel.deleteMany({ houseId: houseId })
       return new HouseResponse('Household deleted', response!)
     } catch (error) {
-      throw new BadRequestError('Delete household failed.')
+      throw new InternalServerError('Delete household failed.')
     }
   }
 }

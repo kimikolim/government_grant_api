@@ -64,7 +64,7 @@ DB_HOST=mongo_db
 
 <strong><em>controllers</em></strong> - contains list of app routes and associate them to a controller that contains implementation code.\
 <strong><em>errors</em></strong> - custom error middleware handler.\
-<strong><em>models</em></strong> - plain objects that represent business entities..\
+<strong><em>models</em></strong> - plain objects that represent business entities.\
 <strong><em>resources</em></strong> - contains classes with response DTOs that used to encapsulate data and Joi validators.\
 <strong><em>services</em></strong> - functions that contains code that interacts with MongoDB directly.\
 <strong><em>utils</em></strong> - general reusable functions.

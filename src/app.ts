@@ -1,7 +1,7 @@
 import { createExpressServer } from "routing-controllers"
-import { GrantController } from "./controllers/grantController"
-import { HouseController } from "./controllers/houseController"
-import { MemberController } from "./controllers/memberController"
+import { GrantController } from "./controllers/GrantController"
+import { HouseController } from "./controllers/HouseController"
+import { MemberController } from "./controllers/MemberController"
 import { ErrorHandler } from "./errors/ErrorHandler"
 
 export const createApp = () => {

@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { Mixed } from 'mongoose'
 import {
   IMemberDetails,
@@ -15,6 +16,7 @@ export class Member {
   occupationType: OccupationType
   annualIncome: number
   DOB: string
+  age: number
   constructor(member: IMemberDetails) {
     this.id = member.id ?? ''
     this.houseId = member.houseId ?? ''
@@ -24,7 +26,8 @@ export class Member {
     this.spouse = member.spouse
     this.occupationType = member.occupationType
     this.annualIncome = member.annualIncome
-    this.DOB = member.DOB
+    this.DOB = member.DOB // DD/MM/YYYY
+    this.age = moment().diff(moment(member.DOB, 'DD/MM/YYYY'), 'years')
   }
 }
 

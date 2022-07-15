@@ -1,6 +1,5 @@
-import mongoose, { Schema, model, ObjectId } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { IMemberDetails } from './memberModel'
-// import { IMemberDetails } from './memberModel'
 
 enum HousingType {
   LANDED = 'LANDED',
@@ -10,6 +9,7 @@ enum HousingType {
 // 1. Create an interface representing household document in MongoDB.
 interface IHouse {
   id?: string
+  totalIncome?: number
   housingType: HousingType
   familyMembers: IMemberDetails[]
 }
